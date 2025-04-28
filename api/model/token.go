@@ -1,0 +1,7 @@
+package model
+
+type Token struct {
+	AccessToken  string `json:"accessToken"`
+	RefreshToken string `json:"refreshToken"`
+	EmailId      string `json:"emailId"`
+}
