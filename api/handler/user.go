@@ -52,9 +52,6 @@ func Login(w http.ResponseWriter, r *http.Request) {
 	user := new(model.User)
 	err := json.NewDecoder(r.Body).Decode(user)
 
-	fmt.Println(user.EmailId)
-	fmt.Println(user.Password)
-
 	if err != nil { //input값 검증
 		result.ResultCode = "E"
 		result.ResultMsg = "Input Error"
@@ -77,6 +74,7 @@ func Login(w http.ResponseWriter, r *http.Request) {
 		result.ResultCode = "F"
 		result.ResultMsg = "회원정보가 존재하지 않습니다."
 		w.Write(util.Marshal(result))
+		return
 	}
 
 	//	사용자 비교
@@ -109,6 +107,10 @@ func Login(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	token.ResultCode = "S"
+	token.ResultMsg = "SUCCESS"
+
+	w.WriteHeader(http.StatusOK)
 	w.Write(util.Marshal(token))
 
 }
