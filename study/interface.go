@@ -65,6 +65,12 @@ import "fmt"
 
 	>> 앞으로 더 추가해 나갈 예정
 
+	타입 - game
+
+	관계 click
+
+	기능 move attac
+
 */
 
 func main() {
